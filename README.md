@@ -1,4 +1,4 @@
-# Angular-6-users-posts
+# Angular-6-users-posts consumig online Fake API https://jsonplaceholder.typicode.com/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
 
