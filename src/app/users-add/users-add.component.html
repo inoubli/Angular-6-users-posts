@@ -1,0 +1,29 @@
+<h1>Users-add</h1>
+<div class="container">
+  <button type="button" class="btn btn-outline-primary btn-block" routerLink="/">Go Back</button>
+</div>
+<br>
+<div class="container-fluid">
+  <form>
+    <div class="form-group">
+      <label for="exampleInputName">Name :</label>
+      <input type="text" class="form-control" placeholder="Enter the Name.." name="name" #name>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputUsername">Username :</label>
+      <input type="text" class="form-control" placeholder="Enter the Username.." name="username" #username>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email :</label>
+      <input type="email" class="form-control" placeholder="Enter email" name="email" #email>
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    
+
+    <button type="button" class="btn btn-primary btn-block" (click)="addUser(name.value,username.value,email.value)">Add Comments
+      <i class="fa fa-plus-circle"></i>
+    </button>
+  </form>
+</div>

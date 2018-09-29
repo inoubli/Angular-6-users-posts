@@ -1,0 +1,89 @@
+<ng-progress [direction]="'ltr+'" [min]="20" [max]="1" [speed]="200"  [trickleSpeed]="300"
+             [spinner]="true" [spinnerPosition]="'right'" [thick]="true" [meteor]="true"
+             [color]="'blue'" [ease]="'linear'"></ng-progress>
+
+
+<div class="container">
+  <button type="button" class="btn btn-primary btn-lg btn-block" routerLink="/users-add">Add User</button>
+  <br>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <span class="badge badge-pill badge-primary float-right">Search By:</span>
+        <input type="text" class="form-control" placeholder="Enter the ..." [(ngModel)]="search">
+        <small class="form-text text-muted">Please entre you're key word.</small>
+      </div>
+    </div>
+    <div class="col">
+      <span class="badge badge-pill badge-primary float-left">Filter By:</span>
+      <br>
+      <div class="btn-group">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Items Per Pages :
+          </button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" (click)="getItemPages(2)">2</a>
+            <a class="dropdown-item" (click)="getItemPages(4)">4</a>
+            <a class="dropdown-item" (click)="getItemPages(6)">6</a>
+          </div>
+        </div>
+    </div>
+  
+    <div class="col">
+      <span class="badge badge-pill badge-primary float-left">Group By:</span>
+      <br>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary">Filter By Element :</button>
+        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)="getProperty('name')">By Name</a>
+          <a class="dropdown-item" (click)="getProperty('username')">By Username</a>
+          <a class="dropdown-item" (click)="getProperty('email')">By Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <span class="badge badge-pill badge-primary float-right">Pages:{{users?.length}}</span>
+      <br>
+      <input type="number" class="form-control" placeholder="Page.." [(ngModel)]="page" min="1">
+      <small class="form-text text-muted">Please entre page number..</small>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<h1>Users</h1>
+<sk-wave *ngIf="isLoading"> </sk-wave> 
+  
+<ul [@listStagger] = "users">
+  <li *ngFor="let user of users | filter:search | paginate: { itemsPerPage: itemsPerPage, currentPage: page } | orderBy: propertyName">
+   
+    <a routerLink="/details/{{user.id}}">{{ user.name }}</a>
+
+      <ul>
+        <li>{{ user.email }}</li>
+        <li><a href="http://{{ user.website }}">{{ user.website }}</a></li>
+        <button type="button" class="btn btn-info" routerLink="/users-update/{{user.id}}">
+          Update
+          <i class="fa fa-pencil"></i>
+        </button>
+        
+        <button type="button" class="btn btn-danger btn-group-lg" (click)="deleteComments(user)">
+          Delete
+          <i class="fa fa-trash"></i>
+        </button>
+        <!--<span class="glyphicon glyphicon-trash text-danger"></span>  -->
+      </ul>
+  </li>
+</ul>

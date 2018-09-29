@@ -1,0 +1,46 @@
+<h1>
+  users-update works!
+</h1>
+<div class="container">
+  <button type="button" class="btn btn-outline-success btn-block" routerLink="/">Go Back</button>
+</div>
+<br>
+<div class="container-fluid">
+  <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+    <div class="form-group">
+      <label for="exampleInputName">Name :</label>
+      <input type="text" class="form-control" placeholder="Enter you re name.." name="name" [(ngModel)]="user.name" #name=ngModel
+        [ngClass]="{'is-invalid':name.errors && name.touched}" required minlength="2">
+      <div [hidden]="!name.errors?.required" class="invalid-feedback">
+        Name required
+      </div>
+      <div [hidden]="!name.errors?.minlength" class="invalid-feedback">
+        Must be at least 2 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputUsername">Username :</label>
+      <input type="text" class="form-control" placeholder="Enter the Username.." name="username" [(ngModel)]="user.username" #username=ngModel
+        [ngClass]="{'is-invalid':username.errors && username.touched}" required minlength="2">
+      <div [hidden]="!username.errors?.required" class="invalid-feedback">
+        Name required
+      </div>
+      <div [hidden]="!name.errors?.minlength" class="invalid-feedback">
+        Must be at least 2 characters
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail">Email :</label>
+      <input type="email" class="form-control" placeholder="Enter email" name="email" [(ngModel)]="user.email" #email=ngModel>
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    
+    <input type="hidden" class="form-control" name="id" [(ngModel)]="user.id" #id=ngModel>
+
+    <button type="submit" class="btn btn-warning btn-block">Update User
+      <i class="fa fa-pencil-alte"></i>
+    </button>
+  </form>
+</div>

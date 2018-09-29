@@ -1,0 +1,10 @@
+<h1>{{user$.name}}</h1>
+
+<ul>
+  <li><strong>Username:</strong> {{user$.username}}</li>
+  <li><strong>Email:</strong> {{user$.email}}</li>
+  <li><strong>Phone:</strong> {{user$.phone}}</li>
+  <li><strong>Zip:</strong> {{user$.address.zipcode}}</li>
+</ul>
+<a href="/users/{{user$.id}}/posts"><img src="../../assets/images/list-ico.png" height="75px"/></a>      
+<h3>See {{user$.name}} all comments </h3>

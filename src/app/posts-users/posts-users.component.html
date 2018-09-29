@@ -1,0 +1,12 @@
+{{(myuser$ | async)?.name}}
+
+<div *ngIf="myuser$">
+  <h2>{{myuser$.name}}'s all posts</h2>
+<div>
+<ul [@listStagger] = "posts$">
+  <li *ngFor="let post of posts$">
+      <a routerLink="../../../details/{{userId$}}">{{ post.title }}</a>      
+      <p>{{ post.body }}</p>
+  
+  </li>
+</ul>
